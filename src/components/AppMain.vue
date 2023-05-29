@@ -14,13 +14,14 @@ export default {
     },
 
     components : {
-        
+
         ProjectCard,
     },
 
     created(){
 
         this.getProjects();
+        
     
     },
 

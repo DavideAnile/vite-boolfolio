@@ -20,7 +20,9 @@ export default {
     computed : {
 
         shortDesc(){
+           
             return this.project.project_description.substring(0 , 60) + '...' ;
+            
         },
 
         shortTitle(){
@@ -61,7 +63,16 @@ export default {
             <div class="body-wrapper">
                 <div class="card-body">
                     <h5 class="card-title">{{ shortTitle }}</h5>
-                    <p class="card-text">{{ shortDesc }}</p>
+                    <div class="mb-3">Project type :  <strong>{{ project.type.name }}</strong></div>
+                    <div>
+                        <span>Technologies :</span>
+
+                            <span v-if="project.technologies.length == 0"> <em> Undefined </em></span>
+                            <span v-else v-for="technology in project.technologies" class="badge rounded-pill m-2" :style="{backgroundColor : technology.color}">{{  technology.name  }}</span>
+                        
+                    </div>
+                    <span><strong>Description :</strong></span>
+                    <p class="card-text py-2">{{ shortDesc }}</p>
                 </div>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">Created by : <em>{{ project.created_by }}</em></li>
@@ -88,3 +99,5 @@ export default {
 }
 
 </style>
+                        
+
