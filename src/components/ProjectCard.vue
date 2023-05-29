@@ -1,40 +1,51 @@
 <script>
 
-import axios from 'axios';
+
 
 export default {
     data(){
         return{
 
-            projects : [],
+            baseUrl : 'http://127.0.0.1:8000/',
+            
 
         }
     },
 
+    props : {
 
-    created(){
-
-        this.getProjects();
+        project : Object,
     },
 
+    computed : {
 
-    methods : {
-
-        getProjects (){
-
-            axios.get('http://127.0.0.1:8000/api/projects').then(res =>{
-                
-            this.projects = res.data.results;
-            
-            
-
-            })
-
+        shortDesc(){
+            return this.project.project_description.substring(0 , 60) + '...' ;
         },
+
+        shortTitle(){
+
+            return this.project.project_name.substring(0, 20) + '...';
+        },
+
+        projectImage(){
+
+            if(this.project.project_cover == null){
+
+                return 'https://icon-library.com/images/no-image-available-icon/no-image-available-icon-7.jpg'
+            
+            } else {
+                
+                return this.baseUrl + 'storage/' + this.project.project_cover;
+            }
+
+        }
+    },
 
     
 
-    }
+
+   
 }
 
 </script>
@@ -42,18 +53,24 @@ export default {
 <template>
  <div class="container">
     <div class="card-container row">
-        <div v-for="project in projects" class="card col-3 my-4 mx-2">
-                <img class="card-img-top" src="..." alt="Card image cap">
-                <div class="card-body">
-                <h5 class="card-title">{{ project.project_name }}</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <div class="card">
+            <div class="img-container">
+                <img class="card-img-top my-img" :src=" projectImage " alt="Card image ">
             </div>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">Created by : <em>{{ project.created_by }}</em></li>
-            </ul>
-            <div class="card-body">
-                <a href="#" class="card-link">Github Link</a>
-                
+
+            <div class="body-wrapper">
+                <div class="card-body">
+                    <h5 class="card-title">{{ shortTitle }}</h5>
+                    <p class="card-text">{{ shortDesc }}</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Created by : <em>{{ project.created_by }}</em></li>
+                </ul>
+                <div class="card-body">
+                    <a href="#" class="card-link">Github Link</a>
+                    
+                </div>
+
             </div>
         </div>
     </div>
@@ -62,11 +79,12 @@ export default {
 
 <style lang="scss" scoped>
 
-.card-container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
+.card{
+    padding: 0;
+
+    .body-wrapper{
+        padding: 0 10px;
+    }
 }
 
 </style>
