@@ -11,19 +11,45 @@ export default {
 </script>
 
 <template>
- <div class="container py-5">
-    <div>Benvenuto!</div>
 
-    <router-link :to="{name : 'projects.index'}">Vai ai progetti!</router-link>
+    <div class="wrapper">
 
-    <br>
+        <div class="container">
+            <h1>Welcome !</h1>
+        </div>
 
-    <router-link :to="{name : 'about'}">Chi sono?</router-link>
-
+    </div>
     
- </div>
+  
 </template>
 
+   
+
+
+
+    
+
 <style lang="scss" scoped>
+
+.wrapper{
+
+    background-image: url('../assets/home-bg.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    .container{
+
+        h1{
+            padding-top: 40px;
+            padding-bottom: 40px;
+        }
+    }
+
+}
+
+    
+
+    
+
 
 </style>

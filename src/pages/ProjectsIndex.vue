@@ -44,20 +44,33 @@ export default {
 </script>
 
 <template>
+    
+        
 
-    <div class="cards-container container py-5">
+            <div class="cards-container container py-5">
+        
+                <div v-for="project in projects" class="card ">
+                    <ProjectCard :project="project"></ProjectCard>
+                </div>
+        
+            </div>
+        
 
-        <div v-for="project in projects" class="card ">
-            <ProjectCard :project="project"></ProjectCard>
-        </div>
 
-    </div>
+   
+
+   
+
 
 
 </template>
 
 <style lang="scss" scoped>
 
+// .wrapper{
+//     background-image: url('../assets/projects-bg.jpg');
+    
+// }
 .cards-container{
     display: flex;
     justify-content: center;

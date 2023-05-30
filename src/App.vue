@@ -23,14 +23,36 @@ export default {
 
 <template>
 
-  <AppHeader></AppHeader>
+  
+  <div class="wrapper">
 
-  <router-view></router-view>
+    <AppHeader></AppHeader>
+  
+    
+    <router-view class="main-body"></router-view>
+    
+  
+  
+  
+    <AppFooter></AppFooter>
 
-  <AppFooter></AppFooter>
+  </div>
+
   
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
+
+.wrapper{
+  display: flex;
+  flex-flow: column nowrap;
+  
+  
+
+  .main-body{
+    flex-grow: 1;
+  }
+
+}
 
 </style>
