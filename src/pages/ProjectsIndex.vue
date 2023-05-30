@@ -2,7 +2,7 @@
 
 import axios from 'axios'
 
-import ProjectCard from './ProjectCard.vue';
+import ProjectCard from '../components/ProjectCard.vue'
 
 export default {
     data(){
@@ -16,13 +16,14 @@ export default {
     components : {
 
         ProjectCard,
+    
     },
 
     created(){
 
-        this.getProjects();
-        
-    
+    this.getProjects();
+
+
     },
 
     methods : {
@@ -30,23 +31,20 @@ export default {
         getProjects (){
 
             axios.get('http://127.0.0.1:8000/api/projects').then(res =>{
-        
+
             this.projects = res.data.results;
-    
-    
 
-    })
+            });
 
-},
+        },    
 
-
-
-}
+    },
 }
 
 </script>
 
 <template>
+
     <div class="cards-container container py-5">
 
         <div v-for="project in projects" class="card ">
@@ -54,7 +52,6 @@ export default {
         </div>
 
     </div>
-
 
 
 </template>
@@ -73,5 +70,6 @@ export default {
     }
     
 }
+
 
 </style>
