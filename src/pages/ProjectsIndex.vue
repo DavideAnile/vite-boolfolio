@@ -45,7 +45,7 @@ export default {
 
 <template>
     
-        
+        <div class="wrapper">
 
             <div class="cards-container container py-5">
         
@@ -54,6 +54,9 @@ export default {
                 </div>
         
             </div>
+
+        </div>
+
         
 
 
@@ -67,10 +70,10 @@ export default {
 
 <style lang="scss" scoped>
 
-// .wrapper{
-//     background-image: url('../assets/projects-bg.jpg');
-    
-// }
+.wrapper{
+
+    background-image: url('../assets/projects-bg.jpg');
+}
 .cards-container{
     display: flex;
     justify-content: center;
@@ -82,6 +85,60 @@ export default {
         width: calc(100% / 4 - (20px / 4 * 3));
     }
     
+}
+
+@media only screen and (max-width: 1200px) {
+
+    .cards-container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-flow: row wrap;
+        gap: 20px;
+
+        .card{
+            width: calc(100% / 3 - (20px / 3 * 2));
+        }
+        
+    }
+
+}
+
+
+ @media only screen and (max-width: 992px) {
+
+
+        .cards-container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-flow: row wrap;
+        gap: 20px;
+
+        .card{
+            width: calc(100% / 2 - (20px / 2 * 1));
+        }
+        
+    }
+
+}
+
+@media only screen and (max-width: 768px) {
+
+
+    .cards-container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-flow: row wrap;
+        gap: 20px;
+
+        .card{
+            width: 100%;
+        }
+        
+    }
+
 }
 
 
