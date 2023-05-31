@@ -81,6 +81,7 @@ export default {
 
         <div v-if="projectExist" class="container py-5 card-container">
 
+            <h1>Ecco i dettagli del post : {{ project.project_name }}</h1>
             <div  class="card " style="width: 25rem;">
                 <img :src="projectImage" class="card-img-top" alt="...">
                 <div class="card-body">
@@ -95,6 +96,7 @@ export default {
                         </div>
 
                     </div>
+                    <div><strong>Creato da : </strong><em>{{ project.created_by }}</em> </div>
                     
                 </div>
             </div>
