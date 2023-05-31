@@ -29,7 +29,7 @@ export default {
     <AppHeader></AppHeader>
   
     
-    <router-view class="main-body"></router-view>
+    <router-view></router-view>
     
   
   
@@ -49,9 +49,7 @@ export default {
   
   
 
-  .main-body{
-    flex-grow: 1;
-  }
+  
 
 }
 

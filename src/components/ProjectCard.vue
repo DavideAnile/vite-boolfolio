@@ -77,10 +77,10 @@ export default {
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">Created by : <em>{{ project.created_by }}</em></li>
                 </ul>
-                <div class="card-body">
-                    <a href="#" class="card-link">Github Link</a>
-                    
+                <div class="card-body show-button">
+                    <router-link :to="{name : 'project.show' , params : {slug : project.slug}}" class="btn btn-primary">Mostra</router-link>
                 </div>
+                    
 
             </div>
         </div>
@@ -95,6 +95,11 @@ export default {
 
     .body-wrapper{
         padding: 0 10px;
+
+        .show-button{
+            display: flex;
+            justify-content: center;
+        }
     }
 }
 
