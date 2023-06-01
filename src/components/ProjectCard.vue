@@ -70,7 +70,7 @@ export default {
                 </div>
                 
                 <div class="card-body show-button">
-                    <router-link :to="{name : 'project.show' , params : {slug : project.slug}}" class="btn btn-primary">Mostra dettagli</router-link>
+                    <router-link :to="{name : 'project.show' , params : {slug : project.slug}}" class="btn btn-primary">Show Details</router-link>
                 </div>
                     
 

@@ -10,6 +10,10 @@ export default {
 
             projects : [],
 
+            types : [],
+
+            selectedTypeid : ''
+
         }
     },
 
@@ -30,13 +34,17 @@ export default {
 
         getProjects (){
 
-            axios.get('http://127.0.0.1:8000/api/projects').then(res =>{
+        
+
+            axios.get('http://127.0.0.1:8000/api/projects' + '?type_id=' + this.selectedTypeid).then(res =>{
 
             this.projects = res.data.results;
 
+            this.types = res.data.types;
+
             });
 
-        },    
+        }, 
 
     },
 }
@@ -46,6 +54,17 @@ export default {
 <template>
     
         <div class="wrapper">
+
+            <div class="container">
+                <form @submit.prevent="getProjects" action="" class="d-flex gap-2 mt-5">
+                    <select v-model="selectedTypeid" name="type_id" id="type_id" class="form-control">
+                        <option value="">All Projects</option>
+                        <option  v-for=" singleType in types" :value=" singleType.id ">{{ singleType.name }}</option>
+                    </select>
+                    <div ><button class="btn btn-primary" type="submit" style="height: 100%;">Filtra</button></div>
+                </form>
+            </div>
+
 
             <div class="cards-container container py-5">
         

@@ -77,7 +77,7 @@ export default {
         </div>
     </div>
 
-    <div v-else>
+    <div v-else class="wrapper">
 
         <div v-if="projectExist" class="container py-5 card-container">
 
@@ -85,23 +85,24 @@ export default {
             <div  class="card " style="width: 25rem;">
                 <img :src="projectImage" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title my-3"><strong>Titolo del Progetto :</strong>  {{project.project_name}}</h5>
-                    <p class="card-text my-3"><strong>Descrizione del progetto :</strong>   {{project.project_description}}</p>
-                    <div class="mb-3"><strong>Tipologia del progetto :</strong>  {{ project.type ? project.type.name : 'Undefined' }}</div>
+                    <h5 class="card-title my-3"><strong>Project Title :</strong>  {{project.project_name}}</h5>
+                    <p class="card-text my-3"><strong>Project Description :</strong>   {{project.project_description}}</p>
+                    <div class="mb-3"><strong>Project Type :</strong>  {{ project.type ? project.type.name : 'Undefined' }}</div>
                     <div>
-                        <strong>Tecnologie utilizzate :</strong>
+                        <strong>Technologies :</strong>
                         <div class="d-flex gap-3 my-2">
                             <span v-if="project.technologies.length != 0" v-for="technology in project.technologies" class="rounded-pill p-1" :style="{backgroundColor : technology.color}">{{ technology.name }}</span>
                             <span v-else> Undefined </span>
                         </div>
 
                     </div>
-                    <div><strong>Creato da : </strong><em>{{ project.created_by }}</em> </div>
+                    <div><strong>Created By : </strong><em>{{ project.created_by }}</em> </div>
+                    <div><strong>Github Link : </strong><a :href=" project.github_link ">{{ project.github_link }}</a></div>
                     
                 </div>
             </div>
             <div class="d-flex justify-content-center">
-                <router-link :to="{name : 'projects.index'}" class="btn btn-primary">Torna ai progetti</router-link>
+                <router-link :to="{name : 'projects.index'}" class="btn btn-primary">All Projects</router-link>
             </div>
     
         </div>
@@ -118,6 +119,15 @@ export default {
 
 <style lang="scss" scoped>
 
+.wrapper{
+
+    background-image: url('../assets/project-show-bg.jpeg');
+    background-size: cover;
+    background-position: center;
+
+    h1{
+        color: white;
+    }
 
     .card-container{
         display: flex;
@@ -127,6 +137,8 @@ export default {
         align-items: center;
     
     }
+
+}
 
 
 </style>
